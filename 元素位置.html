@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript获取DOM元素位置和尺寸大小</title>
+    <style type="text/css">
+        #divParent{
+            padding: 8px; 
+            background-color: #aaa; 
+            position: relative;
+        }
+        #divDisplay{
+            background-color: #0f0;
+            margin: 30px; 
+            padding: 10px;
+            /*min-height: 200px; 
+            min-width: 200px;*/ 
+            width: 800px;
+            height: 500px;
+            border: solid 3px #f00;
+        }
+    </style>
+</head>
+<body>
+
+<div id="divParent">
+
+    <div id="divDisplay">
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+// 1. clientHeight和clientWidth用于描述元素内尺寸，是指 元素内容+内边距 大小，不包括边框（IE下实际包括）、外边距、滚动条部分
+
+// 2. offsetHeight和offsetWidth用于描述元素外尺寸，是指 元素内容+内边距+边框，不包括外边距和滚动条部分
+
+// 3. clientTop和clientLeft返回内边距的边缘和边框的外边缘之间的水平和垂直距离，也就是左，上边框宽度
+
+// 4. offsetTop和offsetLeft表示该元素的左上角（边框外边缘）与已定位的父容器（offsetParent对象）左上角的距离
+
+// 5. offsetParent对象是指元素最近的定位（relative,absolute）祖先元素，递归上溯，如果没有祖先元素是定位的话，会返回null
+
+        var div = document.getElementById('divDisplay');
+
+        var clientHeight = div.clientHeight;
+        var clientWidth = div.clientWidth;
+        div.innerHTML += 'clientHeight: ' + clientHeight + ' (clientHeight就是div的高度+上下的padding)<br/><br/>';
+        div.innerHTML += 'clientWidth: ' + clientWidth + '<br/><br/>';
+
+        var clientLeft = div.clientLeft;
+        var clientTop = div.clientTop;
+        div.innerHTML += 'clientLeft: ' + clientLeft + ' (clientLeft为border－left)<br/><br/>';
+        div.innerHTML += 'clientTop: ' + clientTop + '<br/><br/>';
+
+        var offsetHeight = div.offsetHeight;
+        var offsetWidth = div.offsetWidth;
+        div.innerHTML += 'offsetHeight: ' + offsetHeight + ' (offsetHeight是clientHeight+上下的边框border宽度之和)<br/><br/>';
+        div.innerHTML += 'offsetWidth: ' + offsetWidth + '<br/><br/>';
+
+        var offsetLeft = div.offsetLeft;
+        var offsetTop = div.offsetTop;
+        div.innerHTML += 'offsetLeft: ' + offsetLeft + '<br/><br/>';
+        div.innerHTML += 'offsetTop: ' + offsetTop + '<br/><br/>';
+
+        var offsetParent = div.offsetParent;
+        div.innerHTML += 'offsetParent: ' + offsetParent.id + '<br/><br/>';
+
+        var position = document.getElementById('divDisplay').getBoundingClientRect();
+        div.innerHTML += '视口坐标position: top-' + position.top + ' (getBoundingClientRect 方法 所返回的坐标包含元素的内边距和边框，不包含外边距。兼容性很好，非常好用)<br/><br/>';
+
+    </script>
+
+</body>
+</html>

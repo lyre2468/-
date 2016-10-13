@@ -1,0 +1,59 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>font-size</title>
+    <script type="text/javascript">
+        var scale = 1 / window.devicePixelRatio;
+        // set viewport
+        document.querySelector('meta[name="viewport"]').setAttribute('content','initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+        //set fontSize
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + 'px';
+    </script>
+    <style type="text/css">
+        .modal-bg{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            background: rgba(0,0,0,.6);
+        } 
+        .modal-bg .modal-content{
+            /*  calc( 270 / 375 * 10 ) */
+            width: 7.2rem;
+            height: auto;
+            padding: 10px;
+            background: #ffffff;
+            position: absolute;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+        }
+        li{
+            font-size: 0.45rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+<body>
+    <div>
+        <ul>
+            <li>动态设置viewport的scale</li>
+            <li>动态计算html的font-size</li>
+            <li>布局的时候，各元素的css尺寸=设计稿标注尺寸/设计稿横向分辨率*10</li>
+            <li>font-size可能需要额外的媒介查询，并且font-size不使用rem</li>
+        </ul>
+     </div>
+    <div class="modal-bg">
+        <div class="modal-content">
+            <p><a href="http://www.codeceo.com/article/font-size-web-design.html">参考链接</a></p>
+        </div>
+    </div>
+
+</html>
